@@ -20,18 +20,18 @@ namespace OpenAPI.Validator.Validation.Extensions
         /// <summary>
         /// Violation category of the Rule.
         /// </summary>
-        public override ValidationCategory ValidationCategory => ValidationCategory.SDKViolation;
+        public override ValidationCategory ValidationCategory => RulesMetaData.GetValidationCategory(this.Id);
 
         /// <summary>
         /// What kind of open api document type this rule should be applied to
         /// </summary>
-        public override ServiceDefinitionDocumentType ServiceDefinitionDocumentType => ServiceDefinitionDocumentType.ARM | ServiceDefinitionDocumentType.DataPlane;
+        public override ServiceDefinitionDocumentType ServiceDefinitionDocumentType => RulesMetaData.GetServiceDefinitionDocumentType(this.Id);
 
         /// <summary>
         /// The rule could be violated by a property of a model referenced by many jsons belonging to the same
         /// composed state, to reduce duplicate messages, run validation rule in composed state
         /// </summary>
-        public override ServiceDefinitionDocumentState ValidationRuleMergeState => ServiceDefinitionDocumentState.Composed;
+        public override ServiceDefinitionDocumentState ValidationRuleMergeState => RulesMetaData.GetServiceDefinitionDocumentState(this.Id);
 
         public override bool IsValid(object clientName)
         {
@@ -59,6 +59,6 @@ namespace OpenAPI.Validator.Validation.Extensions
         /// <summary>
         /// The severity of this message (ie, debug/info/warning/error/fatal, etc)
         /// </summary>
-        public override Category Severity => Category.Error;
+        public override Category Severity => RulesMetaData.GetSeverity(this.Id);
     }
 }

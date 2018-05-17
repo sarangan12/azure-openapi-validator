@@ -24,7 +24,7 @@ namespace OpenAPI.Validator.Validation
         /// <summary>
         /// Violation category of the Rule.
         /// </summary>
-        public override ValidationCategory ValidationCategory => ValidationCategory.ARMViolation;
+        public override ValidationCategory ValidationCategory => RulesMetaData.GetValidationCategory(this.Id);
 
         /// <summary>
         /// The template message for this Rule. 
@@ -37,22 +37,22 @@ namespace OpenAPI.Validator.Validation
         /// <summary>
         /// The severity of this message (ie, debug/info/warning/error/fatal, etc)
         /// </summary>
-        public override Category Severity => Category.Error;
+        public override Category Severity => RulesMetaData.GetSeverity(this.Id);
 
         /// <summary>
         /// What kind of change implementing this rule can cause.
         /// </summary>
-        public override ValidationChangesImpact ValidationChangesImpact => ValidationChangesImpact.SDKImpactingChanges;
+        public override ValidationChangesImpact ValidationChangesImpact => RulesMetaData.GetValidationChangesImpact(this.Id);
 
         /// <summary>
         /// Operations API may be defined in a different json found in the composed state
         /// </summary>
-        public override ServiceDefinitionDocumentState ValidationRuleMergeState => ServiceDefinitionDocumentState.Composed;
+        public override ServiceDefinitionDocumentState ValidationRuleMergeState => RulesMetaData.GetServiceDefinitionDocumentState(this.Id);
 
         /// <summary>
         /// Represents Service Definition Document Merge state
         /// </summary>
-        public override ServiceDefinitionDocumentType ServiceDefinitionDocumentType => ServiceDefinitionDocumentType.ARM;
+        public override ServiceDefinitionDocumentType ServiceDefinitionDocumentType => RulesMetaData.GetServiceDefinitionDocumentType(this.Id);
 
         /// <summary>
         /// Validates if the Operations API has been implemented

@@ -23,13 +23,13 @@ namespace OpenAPI.Validator.Validation
         /// <summary>
         /// What kind of open api document type this rule should be applied to
         /// </summary>
-        public override ServiceDefinitionDocumentType ServiceDefinitionDocumentType => ServiceDefinitionDocumentType.ARM | ServiceDefinitionDocumentType.Default;
+        public override ServiceDefinitionDocumentType ServiceDefinitionDocumentType => RulesMetaData.GetServiceDefinitionDocumentType(this.Id);
 
         /// <summary>
         /// The rule could be violated by a property of a model referenced by many jsons belonging to the same
         /// composed state, to reduce duplicate messages, run validation rule in composed state
         /// </summary>
-        public override ServiceDefinitionDocumentState ValidationRuleMergeState => ServiceDefinitionDocumentState.Composed;
+        public override ServiceDefinitionDocumentState ValidationRuleMergeState => RulesMetaData.GetServiceDefinitionDocumentState(this.Id);
 
         /// <summary>
         /// Validates model for description and title property

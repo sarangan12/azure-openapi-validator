@@ -55,24 +55,24 @@ namespace OpenAPI.Validator.Validation.Core
         /// <summary>
         ///     The severity of this message (ie, debug/info/warning/error/fatal, etc)
         /// </summary>
-        public override Category Severity => Category.Error;
+        public override Category Severity => RulesMetaData.GetSeverity(this.Id);
 
         /// <summary>
         /// Violation category of the Rule.
         /// </summary>
-        public override ValidationCategory ValidationCategory => ValidationCategory.SDKViolation;
+        public override ValidationCategory ValidationCategory => RulesMetaData.GetValidationCategory(this.Id);
 
         /// <summary>
         /// What kind of open api document type this rule should be applied to
         /// </summary>
-        public override ServiceDefinitionDocumentType ServiceDefinitionDocumentType => ServiceDefinitionDocumentType.Default;
+        public override ServiceDefinitionDocumentType ServiceDefinitionDocumentType => RulesMetaData.GetServiceDefinitionDocumentType(this.Id);
 
         /// <summary>
         /// When to apply the validation rule, before or after it has been merged as a part of 
         /// its merged document as specified in the corresponding '.md' file
         /// By default consider all rules to be applied for After only
         /// </summary>
-        public override ServiceDefinitionDocumentState ValidationRuleMergeState => ServiceDefinitionDocumentState.Composed;
+        public override ServiceDefinitionDocumentState ValidationRuleMergeState => RulesMetaData.GetServiceDefinitionDocumentState(this.Id);
 
     }
 }

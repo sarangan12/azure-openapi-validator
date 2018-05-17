@@ -23,18 +23,18 @@ namespace OpenAPI.Validator.Validation
         /// <summary>
         /// Violation category of the Rule.
         /// </summary>
-        public override ValidationCategory ValidationCategory => ValidationCategory.SDKViolation;
+        public override ValidationCategory ValidationCategory => RulesMetaData.GetValidationCategory(this.Id);
 
         /// <summary>
         /// What kind of open api document type this rule should be applied to
         /// </summary>
-        public override ServiceDefinitionDocumentType ServiceDefinitionDocumentType => ServiceDefinitionDocumentType.ARM;
+        public override ServiceDefinitionDocumentType ServiceDefinitionDocumentType => RulesMetaData.GetServiceDefinitionDocumentType(this.Id);
 
 
         /// <summary>
         /// The rule runs on each operation in isolation irrespective of the state and can be run in individual state
         /// </summary>
-        public override ServiceDefinitionDocumentState ValidationRuleMergeState => ServiceDefinitionDocumentState.Individual;
+        public override ServiceDefinitionDocumentState ValidationRuleMergeState => RulesMetaData.GetServiceDefinitionDocumentState(this.Id);
 
         /// <summary>
         /// This rule passes if the operation id doesn't contain a repeated value before and after the underscore
@@ -82,7 +82,7 @@ namespace OpenAPI.Validator.Validation
         /// <summary>
         /// The severity of this message (ie, debug/info/warning/error/fatal, etc)
         /// </summary>
-        public override Category Severity => Category.Warning;
+        public override Category Severity => RulesMetaData.GetSeverity(this.Id);
 
     }
 }

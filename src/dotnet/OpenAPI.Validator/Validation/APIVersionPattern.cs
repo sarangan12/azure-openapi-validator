@@ -25,7 +25,7 @@ namespace OpenAPI.Validator.Validation
         /// <summary>
         /// Violation category of the Rule.
         /// </summary>
-        public override ValidationCategory ValidationCategory => ValidationCategory.ARMViolation;
+        public override ValidationCategory ValidationCategory => RulesMetaData.GetValidationCategory(this.Id);
 
         /// <summary>
         /// The template message for this Rule. 
@@ -38,17 +38,17 @@ namespace OpenAPI.Validator.Validation
         /// <summary>
         /// The severity of this message (ie, debug/info/warning/error/fatal, etc)
         /// </summary>
-        public override Category Severity => Category.Error;
+        public override Category Severity => RulesMetaData.GetSeverity(this.Id);
 
         /// <summary>
         /// What kind of open api document type this rule should be applied to
         /// </summary>
-        public override ServiceDefinitionDocumentType ServiceDefinitionDocumentType => ServiceDefinitionDocumentType.ARM;
+        public override ServiceDefinitionDocumentType ServiceDefinitionDocumentType => RulesMetaData.GetServiceDefinitionDocumentType(this.Id);
 
         /// <summary>
         /// What state of the document to run the validation rule on
         /// </summary>
-        public override ServiceDefinitionDocumentState ValidationRuleMergeState => ServiceDefinitionDocumentState.Individual;
+        public override ServiceDefinitionDocumentState ValidationRuleMergeState => RulesMetaData.GetServiceDefinitionDocumentState(this.Id);
 
         /// <summary>
         /// An <paramref name="version"/> fails this rule if it does not have the required format.

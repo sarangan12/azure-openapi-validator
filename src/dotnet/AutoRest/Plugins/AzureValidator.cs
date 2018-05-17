@@ -109,6 +109,8 @@ public class AzureValidator : NewPlugin
                 MergeState = docState
             };
 
+            RulesMetaData.PopulateMetaDataForRules();
+
             foreach (ValidationMessage validationEx in validator.GetValidationExceptions(new Uri(file, UriKind.RelativeOrAbsolute), serviceDefinition, metadata))
             {
                 LogValidationMessage(validationEx);
